@@ -26,3 +26,11 @@ jobs:
       run: mvn -B package --file pom.xml
     - name: Maven Test
       run: mvn test
+    - uses: actions/checkout@v2
+      with:
+        # Disabling shallow clone is recommended for improving relevancy of reporting
+        fetch-depth: 0
+    - name: SonarCloud Scan
+      uses: sonarsource/sonarcloud-github-action@master
+      env:
+        SONAR_TOKEN: e4506a03534fdf8c98b5aa0fe282c5e4333b3842
